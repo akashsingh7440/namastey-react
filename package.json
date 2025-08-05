@@ -1,0 +1,22 @@
+{
+  "name": "namastey-react",
+  "version": "1.0.0",
+  "description": "This is Namastey React package file.",
+  "main": "App.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/akashsingh7440/namastey-react.git"
+  },
+  "author": "Akash Singh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/akashsingh7440/namastey-react/issues"
+  },
+  "homepage": "https://github.com/akashsingh7440/namastey-react#readme",
+  "devDependencies": {
+    "parcel": "^2.15.4"
+  }
+}
