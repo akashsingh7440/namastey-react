@@ -1,121 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import HeaderComponent from "./components/Header";
+import BodyComponent from "./components/Body";
 
-const HeaderComponent = () => {
-  return (
-    <div className="header-container">
-      <div className="image-container">
-        <img src="https://img.freepik.com/free-vector/ecofood-logo-template_1195-33.jpg?semt=ais_hybrid&w=740&q=80" />
-      </div>
-      <div className="nav-items-container">
-        <ul>
-          <li>Home</li>
-          <li>About US</li>
-          <li>Cart</li>
-          <li>Login</li>
-        </ul>
-      </div>
-    </div>
-  );
-};
-
-const BodyComponent = () => {
-  return (
-    <div className="body">
-      <div className="res-container">
-        {restaurantsData.map((data, index) => (
-          <RestorentComponent key={index} restorentData={data} />
-        ))}
-      </div>
-    </div>
-  );
-};
-
-const restoData = {
-  info: {
-    id: "151649",
-    name: "Hotel Sai Nath & Sai Restaurant",
-    cloudinaryImageId: "vkhcohhmqfczycw9vsar",
-    locality: "railway station",
-    areaName: "Chhindwara Locality",
-    costForTwo: "₹200 for two",
-    cuisines: [
-      "North Indian",
-      "South Indian",
-      "Chinese",
-      "Beverages",
-      "Fast Food",
-      "Desserts",
-    ],
-    avgRating: 4.3,
-    veg: true,
-    parentId: "101802",
-    avgRatingString: "4.3",
-    totalRatingsString: "1.0K+",
-    sla: {
-      deliveryTime: 37,
-      lastMileTravel: 11.3,
-      serviceability: "SERVICEABLE",
-      slaString: "35-40 mins",
-      lastMileTravelString: "11.3 km",
-      iconType: "ICON_TYPE_EMPTY",
-    },
-    availability: {
-      nextCloseTime: "2025-08-11 22:30:00",
-      opened: true,
-    },
-    badges: {
-      imageBadges: [
-        {
-          imageId: "v1695133679/badges/Pure_Veg111.png",
-          description: "pureveg",
-        },
-      ],
-    },
-    isOpen: true,
-    aggregatedDiscountInfoV2: {},
-    type: "F",
-    badgesV2: {
-      entityBadges: {
-        imageBased: {
-          badgeObject: [
-            {
-              attributes: {
-                description: "pureveg",
-                imageId: "v1695133679/badges/Pure_Veg111.png",
-              },
-            },
-          ],
-        },
-        textBased: {},
-        textExtendedBadges: {},
-      },
-    },
-    differentiatedUi: {
-      displayType: "ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT",
-      differentiatedUiMediaDetails: {
-        lottie: {},
-        video: {},
-      },
-    },
-    reviewsSummary: {},
-    displayType: "RESTAURANT_DISPLAY_TYPE_DEFAULT",
-    restaurantOfferPresentationInfo: {},
-    externalRatings: {
-      aggregatedRating: {
-        rating: "--",
-      },
-    },
-    ratingsDisplayPreference: "RATINGS_DISPLAY_PREFERENCE_SHOW_SWIGGY",
-  },
-  analytics: {
-    context: "seo-data-79dcf15e-d190-4e8d-933f-d8fc78650023",
-  },
-  cta: {
-    link: "https://www.swiggy.com/city/chhindwara/hotel-sai-nath-and-sai-restaurant-railway-station-chhindwara-locality-rest151649",
-    type: "WEBLINK",
-  },
-};
 const restaurantsData = [
   {
     info: {
@@ -946,34 +833,6 @@ const restaurantsData = [
     },
   },
 ];
-
-const RestorentComponent = (prop) => {
-  const { restorentData } = prop;
-
-  const restorent = restorentData?.info;
-  const restorentName = restorent?.name;
-  const avgRating = restorent?.avgRatingString;
-  const cuisines = restorent?.cuisines;
-  const price = restorent?.costForTwo;
-  const imageId = restorent?.cloudinaryImageId;
-
-  return (
-    <div className="res-card">
-      <img
-        src={
-          "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" +
-          imageId
-        }
-      />
-      <div className="res-card-details">
-        <h2>{restorentName}</h2>
-        <h4>{price}</h4>
-        <h3>{avgRating}</h3>
-        <p>{cuisines?.join(", ")}</p>
-      </div>
-    </div>
-  );
-};
 
 const AppLayout = () => {
   return (

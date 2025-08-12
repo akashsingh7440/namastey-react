@@ -54,3 +54,32 @@ img{
     display: block;
 
 }
+
+
+/* Button CSS */
+.button-container {
+  display: flex;
+  justify-content: Right;
+  padding: 1rem;
+}
+
+.top-restaurants-btn {
+  padding: 0.5rem 1.5rem;
+  background: linear-gradient(to right, #f97316, #ef4444);
+  color: white;
+  font-weight: 600;
+  border: none;
+  border-radius: 9999px; /* full pill shape */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.top-restaurants-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+}
+
+.top-restaurants-btn:active {
+  transform: scale(0.95);
+}
