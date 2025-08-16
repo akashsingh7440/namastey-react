@@ -1,8 +1,8 @@
 import RestorentComponent from "./Restorent";
 import { useEffect, useState } from "react";
+import ShimmerComponent from "./Shimmer";
 
 const BodyComponent = () => {
-  let restorentList;
   const [resList, setResList] = useState([]);
 
   useEffect(() => {
@@ -15,12 +15,16 @@ const BodyComponent = () => {
     );
 
     const response = await data.json();
-    restorentList =
-      response.data.cards[1].card.card.gridElements.infoWithStyle.restaurants;
     console.log(response);
-    setResList(restorentList);
+    setResList(
+      response?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
+        ?.restaurants
+    );
   };
 
+  if (resList.length === 0) {
+    return <ShimmerComponent />;
+  }
   return (
     <div className="body">
       <div className="button-container">

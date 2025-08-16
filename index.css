@@ -83,3 +83,17 @@ img{
 .top-restaurants-btn:active {
   transform: scale(0.95);
 }
+
+.shimmer-container{
+    display: flex;
+    flex-wrap: wrap; 
+    margin-top: 60px;
+}
+
+.shimmer-card{
+    width: 220px;
+    height: 300px;
+    margin: 13px ; 
+    /* margin: 5px; */
+    background-color: #f4f3ef;
+}
