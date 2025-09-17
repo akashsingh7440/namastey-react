@@ -1,0 +1,172 @@
+body{ 
+    padding: 0px;
+    margin: 0px;
+}
+#heading{
+    color: violet;
+}
+
+img{
+    height: 100px;
+    width: 100px;
+}
+
+.nav-items-container ul{
+    display: flex;
+    list-style: none;
+}
+
+.nav-items-container link{
+    padding: 0px 10px;
+}
+.link-class{
+  padding: 0px 10px;
+  text-decoration: none;
+}
+
+.header-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: solid 1px black;
+}
+
+.res-container{
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+}
+.res-card{
+    background-color: #f4f3ef;
+    width: 220px;
+    padding: 5px;
+    margin: 10px;
+    border: solid 1px gray;
+    transition: transform 0.2s ease, box-shadow 0.2s ease; 
+}
+
+.res-card:hover{
+    transform: translateY(-5px); /* slight lift */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* shadow on hover */
+    border-color: #ccc;
+}
+
+.res-card img{
+    width: 100%;
+    height: 152px;
+    object-fit: cover;
+    display: block;
+
+}
+/* Search Inputbox CSS */
+.search-sort-container{
+    display: flex;
+    justify-content: space-between;
+}
+.search-container{
+    padding: 1rem;
+}
+.search-input {
+  padding: 0.5rem 1rem;
+  width: 250px;
+  border: 2px solid transparent;
+  border-radius: 9999px 1000px 1000px 9999px; /* pill shape */
+  background: #f4f3ef; /* light background */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  font-size: 1rem;
+  transition: all 0.2s ease-in-out;
+  outline: none;
+}
+
+.search-input::placeholder {
+  color: #9ca3af; /* gray-400 */
+  font-weight: 500;
+}
+
+.search-input:focus {
+  border-color: #f97316; /* orange-500 */
+  background: white;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+}
+
+/* Button CSS */
+.button-container {
+  display: flex;
+  justify-content: Right;
+  padding: 1rem;
+}
+
+.top-restaurants-btn {
+  padding: 0.5rem 1.5rem;
+  background: linear-gradient(to right, #f97316, #ef4444);
+  color: white;
+  font-weight: 600;
+  border: none;
+  border-radius: 1000px 9999px 9999px 1000px; /* full pill shape */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.top-restaurants-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+}
+
+.top-restaurants-btn:active {
+  transform: scale(0.95);
+}
+
+.shimmer-container{
+    display: flex;
+    flex-wrap: wrap; 
+    margin-top: 60px;
+}
+
+.shimmer-card{
+    width: 220px;
+    height: 300px;
+    margin: 13px ; 
+    /* margin: 5px; */
+    background-color: #f4f3ef;
+}
+
+.error-container {
+  text-align: center;
+}
+
+
+/* This css styling for the restorent Details Page  */
+.restorent-detail-container {
+
+  max-width: 400px;
+  width: 90%;
+  margin: 20px auto 0px;              /* horizontally center */
+  min-height: 100px;           /* take full viewport height */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;     /* vertical center */
+  align-items: center;         /* horizontal center for children */
+
+  background: #F0F9F4;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  text-align: center;
+}
+.restorent-detail-container h1 {
+  margin: 10px 0;
+  font-size: 1.8rem;
+  color: #2C2C2C;
+}
+.restorent-detail-container h2 {
+  margin: 10px 0;
+  font-size: 1.2rem;
+  color: #555;
+}
+
+.restorent-detail-container h3 {
+  margin: 8px 0;
+  font-size: 1rem;
+  color: #555;
+}

@@ -7,6 +7,7 @@ import AboutComponent from "./components/About";
 import ContactComponent from "./components/Contact";
 import ErrorComponent from "./components/Error";
 import RestorentDetailComponent from "./components/RestorentDetail";
+import "../index.css";
 
 const AppLayout = () => {
   return (

@@ -1,34 +1,44 @@
-import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import ShimmerComponent from "./Shimmer";
-import { RESTORENT_DETAILS_API_URL } from "./../utility/constants";
+import useRestorentDetails from "../utility/useRestorentDetails";
+import RestorentMenuComponent from "./RestorentMenu";
 
 const RestorentDetailComponent = () => {
   const { id } = useParams();
-  const [restorentInfo, setRestorentInfo] = useState(null);
-  useEffect(() => {
-    fetchData();
-  }, []);
-
-  const fetchData = async () => {
-    const apiData = await fetch(RESTORENT_DETAILS_API_URL + id);
-    const response = await apiData.json();
-    console.log(response);
-    const restorentDetailsResponse = response?.data?.cards[2].card.card.info;
-    setRestorentInfo(restorentDetailsResponse);
-  };
+  const restorentInfodata = useRestorentDetails(id);
+  const restorentInfo = restorentInfodata?.cards[2]?.card?.card?.info;
 
   return restorentInfo === null ? (
     <ShimmerComponent />
   ) : (
-    <div className="restorent-detail-container">
-      <h1>{restorentInfo?.name}</h1>
-      <h2>{restorentInfo?.cuisines?.join(", ")}</h2>
-      <h2>{restorentInfo?.costForTwoMessage}</h2>
-      <h3>Average Rating : {restorentInfo?.avgRating}</h3>
-      <h3>
-        Location :{restorentInfo?.locality}, {restorentInfo?.areaName}
-      </h3>
+    <div>
+      <div className="mx-auto my-6 w-64 p-8 bg-fuchsia-100 shadow-md rounded-lg">
+        <h1 className="text-xl text-center text-[#810000] font-bold">
+          {restorentInfo?.name}
+        </h1>
+        <h2 className="mt-6 text-[#472D2D]">
+          {restorentInfo?.cuisines?.join(", ")}
+        </h2>
+        <h2 className="mt-3 text-[#DA0037]">
+          {restorentInfo?.costForTwoMessage}
+        </h2>
+        <h3 className="text-[#DA0037]">
+          Average Rating : {restorentInfo?.avgRating}
+        </h3>
+        <p className="mt-3 text-[#102C57] font-sans text-sm font-thin">
+          Location : {restorentInfo?.locality}, {restorentInfo?.areaName}
+        </p>
+      </div>
+      <div>
+        {restorentInfodata?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR.cards.map(
+          (res, index) => (
+            <RestorentMenuComponent
+              key={index}
+              restorentData={res?.card?.card}
+            />
+          )
+        )}
+      </div>
     </div>
   );
 };

@@ -6,40 +6,23 @@ const HeaderComponent = () => {
   // let btnName = "Login";
   const [btnName, seBtnName] = useState("Login");
 
-  //No dependency array
-  useEffect(() => {
-    console.log("Header UseEffect with no dependency called.");
-  });
-
-  //Empty dependency array
-  useEffect(() => {
-    console.log("Header UseEffect with Empty dependency array called.");
-  }, []);
-
-  //State variable pass in dependecy array - btnName
-  useEffect(() => {
-    console.log(
-      "Header UseEffect with state variable passes in dependency array called."
-    );
-  }, [btnName]);
-
   return (
-    <div className="header-container">
-      <div className="image-container">
-        <img src={LOGO_URL} />
+    <div className="flex justify-between bg-[#F3F2EC]">
+      <div className="w-28">
+        <img src={LOGO_URL} className="" />
       </div>
-      <div className="nav-items-container">
+      <div className="my-10">
         <ul>
-          <Link className="link-class" to="/">
+          <Link className="mx-2.5" to="/">
             Home
           </Link>
-          <Link className="link-class" to="/about">
+          <Link className="m-2.5" to="/about">
             About Us
           </Link>
-          <Link className="link-class" to="/contact">
+          <Link className="m-2.5" to="/contact">
             Contact
           </Link>
-          <li>
+          <Link className="m-2.5">
             <button
               className="login-btn"
               onClick={() => {
@@ -48,7 +31,7 @@ const HeaderComponent = () => {
             >
               {btnName}
             </button>
-          </li>
+          </Link>
         </ul>
       </div>
     </div>
