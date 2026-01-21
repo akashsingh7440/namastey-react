@@ -1,4 +1,4 @@
-import RestorentComponent from "./Restorent";
+import RestorentComponent, { PureVegRestorentComponent } from "./Restorent";
 import { useEffect, useState } from "react";
 import ShimmerComponent from "./Shimmer";
 
@@ -10,12 +10,12 @@ const BodyComponent = () => {
   const [allRestorent, setAllRestorent] = useState(resList);
   const restorentlist = useRestorentList();
 
+  const PureVegRestornet = PureVegRestorentComponent(RestorentComponent);
+
   useEffect(() => {
     if (restorentlist.length > 0) {
       setResList(restorentlist);
       setAllRestorent(restorentlist);
-
-      console.log(restorentlist);
     }
   }, [restorentlist]);
 
@@ -23,8 +23,9 @@ const BodyComponent = () => {
     <ShimmerComponent />
   ) : (
     <div className="body">
-      <div className="flex justify-between">
-        <div className="ml-96 justify-end">
+      <div className="grid grid-cols-3 items-center">
+        <div></div>
+        <div className="flex justify-center gap-2">
           <input
             type="text"
             className="w-68 my-5 px-32 py-2 border rounded-lg shadow-sm"
@@ -35,7 +36,7 @@ const BodyComponent = () => {
             }}
           />
           <button
-            className="m-5 px-4 py-2 bg-[#3F4E4F] text-[#E1E9C9] font-semibold rounded-lg "
+            className="flex justify-self-end m-5 px-2 py-2 bg-[#3F4E4F] text-[#E1E9C9] font-semibold rounded-lg "
             onClick={() => {
               const filteredRestorant = allRestorent.filter((text) =>
                 text?.info?.name
@@ -53,8 +54,9 @@ const BodyComponent = () => {
             Search
           </button>
         </div>
+
         <button
-          className="m-5 px-4 py-2 bg-[#FC5185] text-white font-bold rounded-lg"
+          className="flex justify-self-end m-5 px-4 py-2 bg-[#FC5185] text-white font-bold rounded-lg"
           onClick={() => {
             const topRestorent = resList.filter(
               (res) => res?.info?.avgRating > 4.3
@@ -66,12 +68,19 @@ const BodyComponent = () => {
         </button>
       </div>
       <div className="flex flex-wrap justify-center">
-        {resList.map((restaurant) => (
-          <RestorentComponent
-            key={restaurant.info.id}
-            restorentData={restaurant}
-          />
-        ))}
+        {resList.map((restaurant) =>
+          restaurant.info.veg ? (
+            <PureVegRestornet
+              key={restaurant.info.id}
+              restorentData={restaurant}
+            />
+          ) : (
+            <RestorentComponent
+              key={restaurant.info.id}
+              restorentData={restaurant}
+            />
+          )
+        )}
       </div>
     </div>
   );

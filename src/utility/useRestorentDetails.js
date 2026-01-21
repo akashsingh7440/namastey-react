@@ -9,8 +9,8 @@ function useRestorentDetails(id) {
   }, []);
 
   const fetchData = async () => {
-    const apiData = await fetch(RESTORENT_DETAILS_API_URL + id);
-    const response = await apiData.json();
+    const data = await fetch(RESTORENT_DETAILS_API_URL + id);
+    const response = await data.json();
     console.log(response);
     const restorentDetailsResponse = response?.data;
     setRestorentInfo(restorentDetailsResponse);

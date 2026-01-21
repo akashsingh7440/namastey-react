@@ -1,4 +1,4 @@
-import { RESTORENT_LIST_API_URL } from "../utility/constants";
+import { RESTORNET_API_URL } from "../utility/constants";
 import { useEffect, useState } from "react";
 
 function useRestorentList() {
@@ -8,10 +8,10 @@ function useRestorentList() {
   }, []);
 
   const fetchData = async () => {
-    const data = await fetch(RESTORENT_LIST_API_URL);
+    const data = await fetch(RESTORNET_API_URL);
     const response = await data.json();
     setRestorents(
-      response?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
+      response?.data?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants
     );
   };

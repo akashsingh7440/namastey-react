@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useParams } from "react-router";
 import ShimmerComponent from "./Shimmer";
 import useRestorentDetails from "../utility/useRestorentDetails";
@@ -7,12 +8,13 @@ const RestorentDetailComponent = () => {
   const { id } = useParams();
   const restorentInfodata = useRestorentDetails(id);
   const restorentInfo = restorentInfodata?.cards[2]?.card?.card?.info;
+  const [isOpenIndex, setIsOpenIndex] = useState(null);
 
   return restorentInfo === null ? (
     <ShimmerComponent />
   ) : (
     <div>
-      <div className="mx-auto my-6 w-64 p-8 bg-fuchsia-100 shadow-md rounded-lg">
+      <div className="mx-auto my-6 w-64 p-8 bg-[#FFF2EF] shadow-md rounded-lg">
         <h1 className="text-xl text-center text-[#810000] font-bold">
           {restorentInfo?.name}
         </h1>
@@ -35,6 +37,10 @@ const RestorentDetailComponent = () => {
             <RestorentMenuComponent
               key={index}
               restorentData={res?.card?.card}
+              isOpen={isOpenIndex === index}
+              onToggle={() => {
+                setIsOpenIndex(isOpenIndex === index ? null : index);
+              }}
             />
           )
         )}
