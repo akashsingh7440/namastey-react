@@ -6,50 +6,64 @@ const RestorentMenuComponent = (prop) => {
   return (
     <div>
       {restorentData?.itemCards != null && (
-        <div className="my-2 bg-[#F3F2EC] mx-48 h-auto border-b-4 rounded shadow-lg">
-          <>
-            <div
-              className="flex justify-between cursor-pointer"
-              onClick={onToggle}
+        <div className="my-4 bg-white mx-auto max-w-4xl border border-gray-200 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+          <div
+            className="flex justify-between items-center cursor-pointer p-6 hover:bg-gray-50 rounded-t-xl"
+            onClick={onToggle}
+          >
+            <h3 className="text-xl font-semibold text-gray-800">
+              {restorentData?.title} ({restorentData?.itemCards.length} items)
+            </h3>
+            <span
+              className={`transform transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}
             >
-              <h3 className="mb-3 mt-2 mx-6 text-left text-lg text-balance">
-                {restorentData?.title} ({restorentData?.itemCards.length})
-              </h3>
-
-              <span className="mb-3 mt-2 mx-6">⏬</span>
-            </div>
-            {isOpen &&
-              restorentData?.itemCards?.map((item, index) => {
-                return (
-                  <div key={index}>
-                    <div className="justify-between flex">
-                      <div className="ml-8 w-10/12 h-30">
-                        <h2 className="text-red-600 font-semibold">
-                          {item.card.info.name}
-                        </h2>
-                        <h3 className="my-3 w-[88%]">
-                          {item.card.info.description}
-                        </h3>
-                      </div>
-                      <div className="relative my-2 mx-5 w-1/6 h-20">
-                        <img
-                          src={
-                            RESTORENT_IMAGE_BASE_URL + item?.card?.info?.imageId
-                          }
-                          className="w-full h-full object-cover rounded-lg"
-                        />
-                        <button
-                          className="px-1 py-0.5 absolute bg-black/80 
-                        backdrop-blur-md rounded text-sm text-white bottom-1 left-1/2 -translate-x-1/2 shadow-lg"
-                        >
-                          Add+
-                        </button>
-                      </div>
+              ⏬
+            </span>
+          </div>
+          <div
+            className={`px-6 overflow-hidden transition-all duration-500 ease-in-out ${
+              isOpen
+                ? "pb-6 max-h-screen opacity-100"
+                : "pb-0 max-h-0 opacity-0"
+            }`}
+          >
+            {restorentData?.itemCards?.map((item, index) => {
+              return (
+                <div
+                  key={index}
+                  className="border-b border-gray-100 last:border-b-0 py-4"
+                >
+                  <div className="flex justify-between items-start gap-4">
+                    <div className="flex-1">
+                      <h2 className="text-lg font-semibold text-gray-800 mb-2">
+                        {item.card.info.name}
+                      </h2>
+                      <p className="text-gray-600 text-sm leading-relaxed mb-2">
+                        {item.card.info.description}
+                      </p>
+                      <p className="text-green-600 font-medium">
+                        ₹
+                        {item.card.info.price / 100 ||
+                          item.card.info.defaultPrice / 100}
+                      </p>
+                    </div>
+                    <div className="relative flex-shrink-0">
+                      <img
+                        src={
+                          RESTORENT_IMAGE_BASE_URL + item?.card?.info?.imageId
+                        }
+                        alt={item.card.info.name}
+                        className="w-24 h-20 object-cover rounded-lg shadow-md"
+                      />
+                      <button className="absolute bottom-1 left-1/2 transform -translate-x-1/2 px-3 py-1 bg-green-600 text-white text-sm font-medium rounded-full shadow-lg hover:bg-green-700 transition-colors duration-200">
+                        Add+
+                      </button>
                     </div>
                   </div>
-                );
-              })}
-          </>
+                </div>
+              );
+            })}
+          </div>
         </div>
       )}
     </div>
